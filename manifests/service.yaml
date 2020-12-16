@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-svc
+spec:
+  # ClusterIP - only available within cluster, as the IP is private.
+  # NodePort - It opens a port on the host node, which is publicly available.
+  # LoadBalancer - associates a Public IP with the Service.
+  type: LoadBalancer # Can also be NodePort, or LoadBalancer
+  ports:
+    - port: 10101
+      targetPort: nginx-http # Refers to containerPort 80, defined in `deployment.yaml`
+      protocol: TCP
+      name: ngx-svc-port
+  selector:
+    batch: java-az
+    env: production
+    stable: true

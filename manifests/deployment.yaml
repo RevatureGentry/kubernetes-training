@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+# Typically 2 sections in every k8s (o11y, i18n) manifest- metadata, spec
+metadata:
+  name: demo-deployment
+  labels:
+    batch: java-az
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      batch: java-az
+  template:
+    metadata:
+      labels:
+        batch: java-az
+    spec:
+      containers:
+        - name: demo-pod
+          image: "nginx"
+          ports:
+            - containerPort: 80
+              name: nginx-http
+              protocol: TCP
+          env:
+            - name: MY_FIRST_ENV
+              value: "Man, Kubernetes is cool..."
