@@ -28,7 +28,13 @@
     function handleClick(event) {
       const output = document.getElementById('output')
 
-
+      fetch("http://localhost:8080/todos", {
+        mode: "cors",
+      }).then(data => {
+        return data.json()
+      }).then(responseData => {
+        output.innerText = JSON.stringify(responseData)
+      })
     }
   </script>
 </body>
