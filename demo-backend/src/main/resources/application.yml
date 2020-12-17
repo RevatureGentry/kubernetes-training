@@ -4,7 +4,12 @@ spring:
     username: ${DB_USERNAME:sa}
     driver-class-name: ${DB_DRIVER:org.h2.Driver}
     password: ${DB_PASSWORD:""}
-    platform: org.hibernate.dialect.PostgreSQLDialect
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
 management:
   endpoint:
     health:
