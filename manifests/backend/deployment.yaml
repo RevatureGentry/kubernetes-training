@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    tier: server
+    app: demo
+spec:
+  selector:
+    matchLabels:
+      tier: server
+      app: demo
+  template:
+    metadata:
+      labels:
+        tier: server
+        app: demo
+    spec:
+      containers:
+        - name: spring-backend
+          image: 
+          # Below are needed for Minikube
+          # image: backend
+          # imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: spring-http

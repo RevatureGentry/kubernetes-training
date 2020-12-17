@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    tier: client
+    app: demo
+spec:
+  selector:
+    matchLabels:
+      tier: client
+      app: demo
+  template:
+    metadata:
+      name: frontend
+      labels:
+        tier: client
+        app: demo
+    spec:
+      containers:
+        - name: spring-frontend
+          image:
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: client-http
