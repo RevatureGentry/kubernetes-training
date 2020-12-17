@@ -1,11 +1,10 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:~/test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    driver-class-name: org.h2.Driver
-    password:
-    platform: org.hibernate.dialect.H2Dialect
-    initialization-mode: embedded
+    url: ${DB_URL:jdbc:h2:mem:~/test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DB_USERNAME:sa}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+    password: ${DB_PASSWORD:""}
+    platform: org.hibernate.dialect.PostgreSQLDialect
 management:
   endpoint:
     health:
